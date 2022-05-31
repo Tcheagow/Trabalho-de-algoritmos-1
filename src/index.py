@@ -6,32 +6,47 @@ def AddingValuesInArrays(coordAbcissas, coordOrdenadas):
     coords = input().split()
 
     #Adicionando os arrays com as coord em outros arrays
-    #Verificando qual é o maior x, pois irá me ajudar na função CheckOverlap()
-    if int(coords[0]) <= int(coords[2]):
-        coordAbcissas.append([int(coords[0]), int(coords[2])])
-    else:
-        coordAbcissas.append([int(coords[2]), int(coords[0])])
-        
-    #Verificando qual é o maior y, pois irá me ajudar na função CheckOverlap()
-    if int(coords[1]) <= int(coords[3]):
-        coordOrdenadas.append([int(coords[1]), int(coords[3])])
-    else:
-        coordOrdenadas.append([int(coords[3]), int(coords[1])])
+    coordAbcissas.append([int(coords[0]), int(coords[2])])
+    coordOrdenadas.append([int(coords[1]), int(coords[3])])
 
 # função que irá verificar a possibilidade de sobreposição
-def CheckOverlap(coordAbcissas, coordOrdenadas, retangulos):
-    posicao = 0 #var para auxiliar
+def CheckOverlap(coordAbcissas, coordOrdenadas):
+    retang = []
 
-    for j in range(1, len(coordAbcissas)):
-        for k in range(2):
-            if coordAbcissas[posicao][0] <= coordAbcissas[j][k] <= coordAbcissas[posicao][1] and coordOrdenadas[posicao][0] <= coordOrdenadas[j][k] <= coordOrdenadas[posicao][1]:
-                print('ae krl')
-        posicao += 1
-        
+    #verificando qual a menor abcissa
+    if coordAbcissas[0][0] <= coordAbcissas[1][0]:
+        retang.append(coordAbcissas[0][0])
+    else:
+        retang.append(coordAbcissas[1][0])
+
+    #verificando qual a maior ordenada 
+    if coordOrdenadas[0][0] >= coordOrdenadas[1][0]:
+        retang.append(coordOrdenadas[0][0])
+    else:
+        retang.append(coordOrdenadas[1][0])
+
+    #verificando qual a maior abcissa
+    if coordAbcissas[0][1] >= coordAbcissas[1][1]:
+        retang.append(coordAbcissas[0][1])
+    else:
+        retang.append(coordAbcissas[1][1])
+    
+    #verificando qual a menor ordenada 
+    if coordOrdenadas[0][1] <= coordOrdenadas[1][1]:
+        retang.append(coordOrdenadas[0][1])
+    else:
+        retang.append(coordOrdenadas[1][1])
+
+    coordAbcissas.clear()
+    coordOrdenadas.clear()
+
+    coordAbcissas.append([retang[0], retang[2]])
+    coordOrdenadas.append([retang[1], retang[3]])
+
+
 # main function (apenas para manter uma organização)
 def main():
     i = 0
-    retangulos = []
     coordAbscissas = []
     coordOrdenadas = []
 
@@ -48,8 +63,7 @@ def main():
 
             #verifica se o número de ratangulos é maior que 1. Caso seja, verifica sobreposição
             if len(coordOrdenadas) > 1:
-                CheckOverlap(coordAbscissas, coordOrdenadas, retangulos)
-
+                CheckOverlap(coordAbscissas, coordOrdenadas) 
         elif opcao == '2':
             break
         else: 
@@ -57,6 +71,7 @@ def main():
             os.system('cls' if os.name == 'nt' else 'clear')
 
             print('Digite um valor válido')
-
+    print(1)
+    print(f'({coordAbscissas[0][0]},{coordOrdenadas[0][0]}), ({coordAbscissas[0][1]},{coordOrdenadas[0][1]})')
 #chamando a main function
 main()
