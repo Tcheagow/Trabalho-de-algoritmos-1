@@ -67,7 +67,7 @@ def main():
             #incrementando a váriavel i
             i += 1
 
-            #verifica se o número de ratangulos é maior que 1. Caso seja, verifica sobreposição
+            #verifica se o número de ratangulos é maior que 1. Caso seja, cria o menor retângulo que contenha os outros
             if len(coordOrdenadas) > 1:
                 createNewRectangle(coordAbscissas, coordOrdenadas) 
         elif opcao == '2':
