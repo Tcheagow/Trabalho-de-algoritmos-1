@@ -47,7 +47,6 @@ def createNewRectangle(coordAbcissas, coordOrdenadas):
     coordAbcissas.append([retang[0], retang[2]])
     coordOrdenadas.append([retang[1], retang[3]])
 
-
 # main function (apenas para manter uma organização)
 def main():
     #variavel para incrementar
@@ -81,5 +80,6 @@ def main():
     #printando o que foi proposto no trabalho conforme pedido no pdf
     print(1)
     print(f'({coordAbscissas[0][0]},{coordOrdenadas[0][0]}), ({coordAbscissas[0][1]},{coordOrdenadas[0][1]})')
+
 #chamando a main function
 main()
