@@ -1,16 +1,18 @@
+#Código feito por Thiago Aparecido
 import os #importanto a biblioteca os para ter acesso ao método que limpa o terminal
 
-# função que irá apenas adicionar valores nos arryays principais
+# função que irá apenas adicionar valores nos arrays principais
 def AddingValuesInArrays(coordAbcissas, coordOrdenadas):
     #lendo a entrada
     coords = input().split()
 
-    #Adicionando os arrays com as coord em outros arrays
+    #Adicionando os arrays com as coord nos arrays principais
     coordAbcissas.append([int(coords[0]), int(coords[2])])
     coordOrdenadas.append([int(coords[1]), int(coords[3])])
 
-# função que irá verificar a possibilidade de sobreposição
-def CheckOverlap(coordAbcissas, coordOrdenadas):
+# função que irá criar o retângulo maior
+def createNewRectangle(coordAbcissas, coordOrdenadas):
+    #var auxiliar
     retang = []
 
     #verificando qual a menor abcissa
@@ -37,20 +39,25 @@ def CheckOverlap(coordAbcissas, coordOrdenadas):
     else:
         retang.append(coordOrdenadas[1][1])
 
+    #limpando todos os valores dentro dos arrays principais
     coordAbcissas.clear()
     coordOrdenadas.clear()
 
+    #adcionando novos valores nos arrays principais
     coordAbcissas.append([retang[0], retang[2]])
     coordOrdenadas.append([retang[1], retang[3]])
 
 
 # main function (apenas para manter uma organização)
 def main():
+    #variavel para incrementar
     i = 0
+    #arrays principais
     coordAbscissas = []
     coordOrdenadas = []
 
     while i < 100:
+        #verificando o que o user deseja fazer
         print('Deseja incluir um novo retângulo? 1- Sim; 2- Não')
         opcao = input()
 
@@ -63,7 +70,7 @@ def main():
 
             #verifica se o número de ratangulos é maior que 1. Caso seja, verifica sobreposição
             if len(coordOrdenadas) > 1:
-                CheckOverlap(coordAbscissas, coordOrdenadas) 
+                createNewRectangle(coordAbscissas, coordOrdenadas) 
         elif opcao == '2':
             break
         else: 
@@ -71,6 +78,7 @@ def main():
             os.system('cls' if os.name == 'nt' else 'clear')
 
             print('Digite um valor válido')
+    #printando o que foi proposto no trabalho conforme pedido no pdf
     print(1)
     print(f'({coordAbscissas[0][0]},{coordOrdenadas[0][0]}), ({coordAbscissas[0][1]},{coordOrdenadas[0][1]})')
 #chamando a main function
