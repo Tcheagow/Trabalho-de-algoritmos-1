@@ -3,6 +3,9 @@ import os #importanto a biblioteca os para ter acesso ao método que limpa o ter
 
 # função que irá apenas adicionar valores nos arrays principais
 def AddingValuesInArrays(coordAbcissas, coordOrdenadas):
+    #pedindo para o usuário digitar as coordenadas conforme proposto no trabalho
+    print('Digite as coordenadas conforme pedido no trabalho')
+    
     #lendo a entrada
     coords = input().split()
 
@@ -77,9 +80,14 @@ def main():
             os.system('cls' if os.name == 'nt' else 'clear')
 
             print('Digite um valor válido')
-    #printando o que foi proposto no trabalho conforme pedido no pdf
-    print(1)
-    print(f'({coordAbscissas[0][0]},{coordOrdenadas[0][0]}), ({coordAbscissas[0][1]},{coordOrdenadas[0][1]})')
+    
+    # verificando tamanho do etor principal para saber o que imprimir
+    if len(coordAbscissas) == 0:
+        print("Você não digitou nenhum retângulo")
+    else:
+        #printando o que foi proposto no trabalho conforme pedido no pdf
+        print(1)
+        print(f'({coordAbscissas[0][0]},{coordOrdenadas[0][0]}), ({coordAbscissas[0][1]},{coordOrdenadas[0][1]})')
 
 #chamando a main function
 main()
